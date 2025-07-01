@@ -1,11 +1,11 @@
-package dev.heitor.CadastroDeNinjas;
+package dev.heitor.CadastroDeNinjas.Ninjas;
 
 import jakarta.persistence.*;
 
 // Entity transforma uma classe em uma entidade do banco de dados
 // JPA = Java Persistence API
 @Entity
-@Table(name = "tb_cadastro")
+@Table(name = "tb_ninjas")
 public class NinjaModel {
 
     @Id
@@ -14,6 +14,7 @@ public class NinjaModel {
     private String name;
     private String email;
     private  int age;
+    private List<MissoesModel> missoes;
 
     // No args constructor
     public NinjaModel() {
