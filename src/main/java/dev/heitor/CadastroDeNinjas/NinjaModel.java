@@ -10,20 +10,14 @@ public class NinjaModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String email;
-    private  int age;
 
     // No args constructor
     public NinjaModel() {
     }
 
     // Constructor
-    public NinjaModel(String name, String email, int age) {
         this.name = name;
         this.email = email;
-        this.age = age;
     }
 
     // Getters and Setters
@@ -44,12 +38,8 @@ public class NinjaModel {
         this.email = email;
     }
 
-    public int getAge() {
-        return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public Long getId() {
