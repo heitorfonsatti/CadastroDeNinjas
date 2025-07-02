@@ -1,9 +1,10 @@
 package dev.heitor.CadastroDeNinjas.Ninjas.Services;
 
-import dev.heitor.CadastroDeNinjas.Missoes.MissionModel;
+import dev.heitor.CadastroDeNinjas.Missoes.Model.MissionModel;
 import dev.heitor.CadastroDeNinjas.Missoes.Services.MissionService;
+import dev.heitor.CadastroDeNinjas.Ninjas.DTO.NinjaRequestDTO;
 import dev.heitor.CadastroDeNinjas.Ninjas.DTO.NinjaResponseDTO;
-import dev.heitor.CadastroDeNinjas.Ninjas.NinjaModel;
+import dev.heitor.CadastroDeNinjas.Ninjas.Model.NinjaModel;
 import dev.heitor.CadastroDeNinjas.Ninjas.Repository.NinjaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class NinjaService {
     private final NinjaRepository ninjaRepository;
     private final MissionService missionService;
 
-    public NinjaResponseDTO create(NinjaResponseDTO dto) {
+    public NinjaResponseDTO create(NinjaRequestDTO dto) {
         MissionModel mission = missionService.findById(dto.getId());
 
         NinjaModel ninja = new NinjaModel();

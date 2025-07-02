@@ -2,7 +2,7 @@ package dev.heitor.CadastroDeNinjas.Missoes.Services;
 
 import dev.heitor.CadastroDeNinjas.Missoes.DTO.MissionRequestDTO;
 import dev.heitor.CadastroDeNinjas.Missoes.DTO.MissionResponseDTO;
-import dev.heitor.CadastroDeNinjas.Missoes.MissionModel;
+import dev.heitor.CadastroDeNinjas.Missoes.Model.MissionModel;
 import dev.heitor.CadastroDeNinjas.Missoes.Repository.MissionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

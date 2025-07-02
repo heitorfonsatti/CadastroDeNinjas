@@ -1,6 +1,6 @@
-package dev.heitor.CadastroDeNinjas.Ninjas;
+package dev.heitor.CadastroDeNinjas.Ninjas.Model;
 
-import dev.heitor.CadastroDeNinjas.Missoes.MissionModel;
+import dev.heitor.CadastroDeNinjas.Missoes.Model.MissionModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Data
 public class NinjaRequestDTO {
 
+    private Long id;
     private String name;
     private String email;
     private int age;
