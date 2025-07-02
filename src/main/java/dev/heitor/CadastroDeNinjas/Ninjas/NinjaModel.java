@@ -1,12 +1,18 @@
 package dev.heitor.CadastroDeNinjas.Ninjas;
 
-import dev.heitor.CadastroDeNinjas.Missoes.MissoesModel;
+import dev.heitor.CadastroDeNinjas.Missoes.MissionModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 // Entity transforma uma classe em uma entidade do banco de dados
 // JPA = Java Persistence API
 @Entity
+@Data
 @Table(name = "tb_ninjas")
+@NoArgsConstructor
+@AllArgsConstructor
 public class NinjaModel {
 
     @Id
@@ -18,46 +24,6 @@ public class NinjaModel {
 
     @ManyToOne // Um ninja tem uma única missão
     @JoinColumn(name = "missoes_id") // Foreing Key
-    private MissoesModel mission;
+    private MissionModel mission;
 
-    // No args constructor
-    public NinjaModel() {
-    }
-
-    // Constructor
-    public NinjaModel(String name, String email, int age) {
-        this.name = name;
-        this.email = email;
-        this.age = age;
-    }
-
-    // Getters and Setters
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }
