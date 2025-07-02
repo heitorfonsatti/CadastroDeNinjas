@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -19,7 +20,7 @@ public class NinjaService {
     private final MissionService missionService;
 
     public NinjaResponseDTO create(NinjaRequestDTO dto) {
-        MissionModel mission = missionService.findById(dto.getId());
+        MissionModel mission = missionService.findById(dto.getMissionId());
 
         NinjaModel ninja = new NinjaModel();
         ninja.setName(dto.getName());
@@ -50,6 +51,36 @@ public class NinjaService {
 
             return dto;
         }).toList();
+    }
+
+    public NinjaResponseDTO update(Long id, NinjaRequestDTO dto) {
+        NinjaModel ninja = ninjaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Ninja não encontrado"));
+
+        MissionModel mission = missionService.findById((dto.getMissionId()));
+
+        ninja.setName(dto.getName());
+        ninja.setEmail(dto.getEmail());
+        ninja.setAge(dto.getAge());
+        ninja.setMission(mission);
+
+        NinjaModel updated = ninjaRepository.save(ninja);
+
+        NinjaResponseDTO response = new NinjaResponseDTO();
+        response.setId(updated.getId());
+        response.setName(updated.getName());
+        response.setEmail(updated.getEmail());
+        response.setAge(updated.getAge());
+        response.setMissionName(updated.getMission().getMission());
+
+        return response;
+    }
+
+    public void delete(Long id) {
+        if (!ninjaRepository.existsById(id)) {
+            throw new RuntimeException("Ninja não encontrado");
+        }
+        ninjaRepository.deleteById(id);
     }
 
 }

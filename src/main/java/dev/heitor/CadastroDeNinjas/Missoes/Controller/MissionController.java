@@ -28,4 +28,16 @@ public class MissionController {
     public List<MissionResponseDTO> listAll() {
         return missionService.listAll();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MissionResponseDTO> update(@PathVariable Long id, @RequestBody MissionRequestDTO dto) {
+        MissionResponseDTO response = missionService.update(id, dto);
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        missionService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

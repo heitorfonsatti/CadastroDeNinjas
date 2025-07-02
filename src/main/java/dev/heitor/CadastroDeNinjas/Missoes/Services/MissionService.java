@@ -47,4 +47,27 @@ public class MissionService {
                 .orElseThrow(() -> new RuntimeException("Missão não encontrada"));
     }
 
+    public MissionResponseDTO update(Long id, MissionRequestDTO dto) {
+        MissionModel mission = missionRepository.findById(id).orElseThrow(() -> new RuntimeException("Missão não encontrada"));
+
+        mission.setMission(dto.getMission());
+        mission.setRank(dto.getRank());
+
+        MissionModel updated = missionRepository.save(mission);
+
+        MissionResponseDTO response = new MissionResponseDTO();
+        response.setId(updated.getId());
+        response.setMission(updated.getMission());
+        response.setRank(updated.getRank());
+
+        return response;
+    }
+
+    public void delete(Long id) {
+        if(!missionRepository.existsById(id)) {
+            throw new RuntimeException("Missão não encontrada");
+        }
+        missionRepository.deleteById(id);
+    }
+
 }
