@@ -3,6 +3,8 @@ package dev.heitor.CadastroDeNinjas.Missoes;
 import dev.heitor.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tb_missoes")
 public class MissoesModel {
@@ -12,7 +14,9 @@ public class MissoesModel {
     private Long id;
     private String mission;
     private String rank;
-    private NinjaModel ninja;
+
+    @OneToMany(mappedBy = "mission") // Uma missão pode ter vários ninjas
+    private List<NinjaModel> ninja;
 
     public MissoesModel() {
 

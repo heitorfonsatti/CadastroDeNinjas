@@ -1,5 +1,6 @@
 package dev.heitor.CadastroDeNinjas.Ninjas;
 
+import dev.heitor.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
 
 // Entity transforma uma classe em uma entidade do banco de dados
@@ -14,7 +15,10 @@ public class NinjaModel {
     private String name;
     private String email;
     private  int age;
-    private List<MissoesModel> missoes;
+
+    @ManyToOne // Um ninja tem uma única missão
+    @JoinColumn(name = "missoes_id") // Foreing Key
+    private MissoesModel mission;
 
     // No args constructor
     public NinjaModel() {
